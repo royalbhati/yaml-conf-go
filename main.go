@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	log := log.New(os.Stdout, "URL SHORTENER : ", log.LstdFlags|log.Lmicroseconds|log.Lshortfile)
+	log := log.New(os.Stdout, "EXAMPLE APP : ", log.LstdFlags|log.Lmicroseconds|log.Lshortfile)
 
 	cfgFlags, err := config.ParseFlags()
 	if err != nil {
@@ -45,8 +45,6 @@ func (h *App) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 }
 
 func run(cfg *config.Config, log *log.Logger) error {
-	log.Println("heyyy", cfg.Web)
-	log.Println("heyyy", cfg.Web.Host)
 
 	app := NewApp()
 	app.mux.MethodFunc(http.MethodGet, "/", func(w http.ResponseWriter, r *http.Request) {
